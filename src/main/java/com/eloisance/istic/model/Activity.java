@@ -1,7 +1,5 @@
 package com.eloisance.istic.model;
 
-import com.eloisance.istic.Levels;
-
 import javax.persistence.*;
 
 @Entity
@@ -10,11 +8,11 @@ public class Activity {
     private Long id;
     private User user;
     private Sport sport;
-    private Enum<Levels> level;
+    private String level;
 
     public Activity() { }
 
-    public Activity(User p, Sport s, Enum<Levels> level) {
+    public Activity(User p, Sport s, String level) {
         setUser(p);
         setSport(s);
         setLevel(level);
@@ -48,11 +46,11 @@ public class Activity {
         this.sport = sport;
     }
 
-    public Enum<Levels> getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(Enum<Levels> level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 }

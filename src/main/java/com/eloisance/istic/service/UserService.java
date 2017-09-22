@@ -12,8 +12,6 @@ import java.util.logging.Logger;
 @Transactional
 public class UserService implements ServiceInterface<User> {
 
-    private static final Logger logger = Logger.getLogger(UserService.class.getName());
-
     private UserDAO userDAO;
 
     public UserService (UserDAO userDAO){

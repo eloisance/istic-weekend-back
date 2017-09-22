@@ -1,5 +1,6 @@
 package com.eloisance.istic.service;
 
+import com.eloisance.istic.dao.ActivityDAO;
 import com.eloisance.istic.model.Activity;
 import org.springframework.stereotype.Service;
 
@@ -10,11 +11,17 @@ import java.util.List;
 @Transactional
 public class ActivityService implements ServiceInterface<Activity> {
 
+    private ActivityDAO activityDAO;
+
+    public ActivityService (ActivityDAO activityDAO) {
+        this.activityDAO = activityDAO;
+    }
+
     public Activity findOne(Long id) {
-        return null;
+        return activityDAO.findOne(id);
     }
 
     public List<Activity> findAll() {
-        return null;
+        return activityDAO.findAll();
     }
 }

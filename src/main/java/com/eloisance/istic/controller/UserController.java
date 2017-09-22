@@ -16,8 +16,11 @@ public class UserController {
 
     private final static Logger logger = Logger.getLogger(UserController.class);
 
-    @Autowired
     private UserService userService;
+
+    public UserController (UserService userService) {
+        this.userService = userService;
+    }
 
     /**
      * Endpoint to GET running from running id
