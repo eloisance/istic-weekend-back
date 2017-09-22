@@ -1,13 +1,11 @@
 package com.eloisance.istic.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-public class User {
+public class User implements Serializable {
 
     private Long id;
     private String firstname;
@@ -26,7 +24,7 @@ public class User {
     }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -67,12 +65,24 @@ public class User {
         this.phone = phone;
     }
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     public List<Activity> getActivities() {
         return activities;
     }
 
     public void setActivities(List<Activity> activities) {
         this.activities = activities;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", activities=" + activities +
+                '}';
     }
 }

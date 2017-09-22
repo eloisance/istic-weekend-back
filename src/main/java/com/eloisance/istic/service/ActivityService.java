@@ -1,25 +1,20 @@
 package com.eloisance.istic.service;
 
-import com.eloisance.istic.dao.ActivityDAO;
-import com.eloisance.istic.dao.PlaceDAO;
 import com.eloisance.istic.model.Activity;
-import com.eloisance.istic.model.Place;
+import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+import java.util.List;
 
+@Service
+@Transactional
 public class ActivityService implements ServiceInterface<Activity> {
 
-    private ActivityDAO activityDAO;
-
-    public ActivityService(EntityManager manager) {
-        activityDAO = new ActivityDAO(manager);
+    public Activity findOne(Long id) {
+        return null;
     }
 
-    public void create(Activity activity) {
-        activityDAO.create(activity);
-    }
-
-    public Activity findById(Long id) {
-        return activityDAO.findById(id);
+    public List<Activity> findAll() {
+        return null;
     }
 }

@@ -2,22 +2,29 @@ package com.eloisance.istic.service;
 
 import com.eloisance.istic.dao.UserDAO;
 import com.eloisance.istic.model.User;
+import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+import java.util.List;
+import java.util.logging.Logger;
 
+@Service
+@Transactional
 public class UserService implements ServiceInterface<User> {
+
+    private static final Logger logger = Logger.getLogger(UserService.class.getName());
 
     private UserDAO userDAO;
 
-    public UserService(EntityManager manager) {
-        userDAO = new UserDAO(manager);
+    public UserService (UserDAO userDAO){
+        this.userDAO = userDAO;
     }
 
-    public void create(User user) {
-        userDAO.create(user);
+    public User findOne(Long id) {
+        return userDAO.findOne(id);
     }
 
-    public User findById(Long id) {
-        return userDAO.findById(id);
+    public List<User> findAll() {
+        return userDAO.findAll();
     }
 }

@@ -1,23 +1,20 @@
 package com.eloisance.istic.service;
 
-import com.eloisance.istic.dao.PlaceDAO;
 import com.eloisance.istic.model.Place;
+import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+import java.util.List;
 
+@Service
+@Transactional
 public class PlaceService implements ServiceInterface<Place> {
 
-    private PlaceDAO placeDAO;
-
-    public PlaceService(EntityManager manager) {
-        placeDAO = new PlaceDAO(manager);
+    public Place findOne(Long id) {
+        return null;
     }
 
-    public void create(Place place) {
-        placeDAO.create(place);
-    }
-
-    public Place findById(Long id) {
-        return placeDAO.findById(id);
+    public List<Place> findAll() {
+        return null;
     }
 }

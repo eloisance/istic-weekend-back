@@ -1,8 +1,11 @@
 package com.eloisance.istic.service;
 
+import java.util.List;
+
 public interface ServiceInterface<T> {
 
-    void create(T t);
+    T findOne(Long id);
 
-    T findById(Long id);
+    List<T> findAll();
+
 }

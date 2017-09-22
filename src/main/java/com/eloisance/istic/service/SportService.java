@@ -1,30 +1,20 @@
 package com.eloisance.istic.service;
 
-import com.eloisance.istic.dao.SportDAO;
 import com.eloisance.istic.model.Sport;
+import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+import java.util.List;
 
+@Service
+@Transactional
 public class SportService implements ServiceInterface<Sport> {
 
-    private SportDAO sportDAO;
-
-    public SportService(EntityManager manager) {
-        sportDAO = new SportDAO(manager);
+    public Sport findOne(Long id) {
+        return null;
     }
 
-    public void create(Sport sport) {
-        sportDAO.create(sport);
+    public List<Sport> findAll() {
+        return null;
     }
-
-    public Sport findById(Long id) {
-        return sportDAO.findById(id);
-    }
-
-    /** More methods **/
-
-    public Sport findByName(String name) {
-        return sportDAO.findByName(name);
-    }
-
 }

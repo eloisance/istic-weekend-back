@@ -35,4 +35,6 @@ public class Place {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }
