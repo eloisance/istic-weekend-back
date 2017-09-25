@@ -14,8 +14,6 @@ import java.util.List;
 @RestController
 public class UserController {
 
-    private final static Logger logger = Logger.getLogger(UserController.class);
-
     private UserService userService;
 
     public UserController (UserService userService) {
@@ -28,8 +26,7 @@ public class UserController {
      * @return running
      */
     @RequestMapping(value="/users/{id}", method= RequestMethod.GET)
-    public User getRunning(@PathVariable("id") Long id) {
-        logger.info("getUser id " + id);
+    public User getUser(@PathVariable("id") Long id) {
         return userService.findOne(id);
     }
 
@@ -40,7 +37,6 @@ public class UserController {
      */
     @RequestMapping(value="/users", method= RequestMethod.GET)
     public List<User> getUsers() {
-        logger.info("getUsers");
         return userService.findAll();
     }
 
