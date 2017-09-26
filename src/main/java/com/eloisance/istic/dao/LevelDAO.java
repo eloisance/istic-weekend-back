@@ -1,0 +1,11 @@
+package com.eloisance.istic.dao;
+
+import com.eloisance.istic.model.Level;
+import com.eloisance.istic.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface LevelDAO extends JpaRepository<Level, Long> {
+
+}

@@ -1,19 +1,23 @@
 package com.eloisance.istic.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
-public class Sport {
+public class Sport implements Serializable {
 
     private Long id;
     private String name;
+    private List<Level> levels;
 
     public Sport() { }
 
-    public Sport(String name) {
+    public Sport(String name, List<Level> levels) {
         setName(name);
+        setLevels(levels);
     }
 
     @Id
@@ -34,4 +38,13 @@ public class Sport {
         this.name = name;
     }
 
+    @JsonIgnoreProperties(value = "sport")
+    @OneToMany(mappedBy = "sport", fetch = FetchType.EAGER)
+    public List<Level> getLevels() {
+        return levels;
+    }
+
+    public void setLevels(List<Level> levels) {
+        this.levels = levels;
+    }
 }

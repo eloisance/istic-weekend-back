@@ -1,5 +1,8 @@
 package com.eloisance.istic.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,15 +10,13 @@ public class Activity {
 
     private Long id;
     private User user;
-    private Sport sport;
-    private String level;
+    private Level level;
 
     public Activity() { }
 
-    public Activity(User p, Sport s, String level) {
-        setUser(p);
-        setSport(s);
-        setLevel(level);
+    public Activity(User u, Level l) {
+        setUser(u);
+        setLevel(l);
     }
 
     @Id
@@ -29,6 +30,7 @@ public class Activity {
     }
 
     @ManyToOne
+    @JsonIgnoreProperties(value = "activities")
     public User getUser() {
         return user;
     }
@@ -38,19 +40,12 @@ public class Activity {
     }
 
     @ManyToOne
-    public Sport getSport() {
-        return sport;
-    }
-
-    public void setSport(Sport sport) {
-        this.sport = sport;
-    }
-
-    public String getLevel() {
+    @JsonIgnoreProperties(value = "activities")
+    public Level getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(Level level) {
         this.level = level;
     }
 }
