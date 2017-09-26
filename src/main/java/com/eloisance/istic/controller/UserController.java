@@ -2,8 +2,6 @@ package com.eloisance.istic.controller;
 
 import com.eloisance.istic.model.User;
 import com.eloisance.istic.service.UserService;
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,9 +19,9 @@ public class UserController {
     }
 
     /**
-     * Endpoint to GET running from running id
-     * @param id running id
-     * @return running
+     * Endpoint to GET user from user id
+     * @param id user id
+     * @return user
      */
     @RequestMapping(value="/users/{id}", method= RequestMethod.GET)
     public User getUser(@PathVariable("id") Long id) {
