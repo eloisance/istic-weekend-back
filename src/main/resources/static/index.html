@@ -9,12 +9,16 @@
     </head>
     <body ng-app="app">
 
+        <div header></div>
+
         <div ng-view></div>
 
         <script src="/webjars/angularjs/1.4.9/angular.js"></script>
         <script src="/webjars/angularjs/1.4.9/angular-resource.js"></script>
         <script src="/webjars/angularjs/1.4.9/angular-route.js"></script>
+        <script src="directive/header.js"></script>
         <script src="app.js"></script>
-        <script src="controller.js"></script>
+        <script src="controllers/HomeController.js"></script>
+        <script src="controllers/LoginController.js"></script>
     </body>
 </html>

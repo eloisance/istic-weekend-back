@@ -1,15 +1,20 @@
 var app = angular.module('app', ['ngRoute','ngResource']);
-app.config(function($routeProvider){
+
+app.config(function($routeProvider) {
     $routeProvider
-        .when('/home',{
+        .when('/home', {
             templateUrl: '/views/home.html',
-            controller: 'HomeController'
+            controller: 'HomeController',
+            controllerAs: 'vm'
         })
-        .when('/login',{
+        .when('/login', {
             templateUrl: '/views/login.html',
-            controller: 'LoginController'
+            controller: 'LoginController',
+            controllerAs: 'vm'
         })
         .otherwise(
-            { redirectTo: '/home'}
+            { redirectTo: '/home' }
         );
 });
+
+app.directive('header', headerDirective);
