@@ -1,6 +1,6 @@
 package com.eloisance.istic.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.eloisance.istic.helper.EnumRole;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -14,15 +14,21 @@ public class User implements Serializable {
     private String firstname;
     private String lastname;
     private String email;
+    private String password;
+    private boolean enable;
+    private EnumRole role;
     private String phone;
     private List<Activity> activities;
 
     public User() { }
 
-    public User(String firstname, String lastname, String email, String phone) {
+    public User(String firstname, String lastname, String email, String password, boolean enable, EnumRole role, String phone) {
         setFirstname(firstname);
         setLastname(lastname);
         setEmail(email);
+        setPassword(password);
+        setEnable(enable);
+        setRole(role);
         setPhone(phone);
     }
 
@@ -58,6 +64,31 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
+    }
+
+    @Enumerated(EnumType.STRING)
+    public EnumRole getRole() {
+        return role;
+    }
+
+    public void setRole(EnumRole role) {
+        this.role = role;
     }
 
     public String getPhone() {

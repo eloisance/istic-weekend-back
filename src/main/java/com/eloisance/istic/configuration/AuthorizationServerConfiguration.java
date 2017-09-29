@@ -11,18 +11,18 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.approval.UserApprovalHandler;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
-    private static String REALM="MY_OAUTH_REALM";
+    private static String REALM = "MY_OAUTH_REALM";
 
     @Autowired
-    private TokenStore tokenStore;
-
-    @Autowired
-    private UserApprovalHandler userApprovalHandler;
+    private DataSource dataSource;
 
     @Autowired
     @Qualifier("authenticationManagerBean")
@@ -43,8 +43,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
-            .tokenStore(tokenStore)
-            .userApprovalHandler(userApprovalHandler)
+            .tokenStore(new JdbcTokenStore(dataSource))
             .authenticationManager(authenticationManager);
     }
 
