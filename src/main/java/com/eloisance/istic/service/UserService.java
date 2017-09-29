@@ -18,6 +18,10 @@ public class UserService implements ServiceInterface<User> {
         this.userDAO = userDAO;
     }
 
+    public User findByEmail(String email) {
+        return userDAO.findByEmail(email);
+    }
+
     public User findOne(Long id) {
         return userDAO.findOne(id);
     }
