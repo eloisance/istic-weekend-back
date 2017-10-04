@@ -1,6 +1,5 @@
 package com.eloisance.istic.configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -9,8 +8,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.approval.UserApprovalHandler;
-import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
 import javax.sql.DataSource;
@@ -21,12 +18,15 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     private static String REALM = "MY_OAUTH_REALM";
 
-    @Autowired
     private DataSource dataSource;
 
-    @Autowired
     @Qualifier("authenticationManagerBean")
     private AuthenticationManager authenticationManager;
+
+    public AuthorizationServerConfiguration(DataSource dataSource, AuthenticationManager authenticationManager) {
+        this.dataSource = dataSource;
+        this.authenticationManager = authenticationManager;
+    }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -51,5 +51,4 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
         oauthServer.realm(REALM+"/client");
     }
-
 }
