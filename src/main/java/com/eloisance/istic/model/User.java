@@ -15,21 +15,19 @@ public class User implements Serializable {
     private String lastname;
     private String email;
     private String password;
-    private boolean enable;
+    private boolean enabled;
     private EnumRole role;
-    private String phone;
     private List<Activity> activities;
 
     public User() { }
 
-    public User(String firstname, String lastname, String email, String password, boolean enable, EnumRole role, String phone) {
+    public User(String firstname, String lastname, String email, String password, boolean enabled, EnumRole role) {
         setFirstname(firstname);
         setLastname(lastname);
         setEmail(email);
         setPassword(password);
-        setEnable(enable);
+        setEnabled(enabled);
         setRole(role);
-        setPhone(phone);
     }
 
     @Id
@@ -74,12 +72,12 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public boolean isEnable() {
-        return enable;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
-    public void setEnable(boolean enable) {
-        this.enable = enable;
+    public boolean isEnabled() {
+        return enabled;
     }
 
     @Enumerated(EnumType.STRING)
@@ -89,14 +87,6 @@ public class User implements Serializable {
 
     public void setRole(EnumRole role) {
         this.role = role;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
@@ -116,7 +106,9 @@ public class User implements Serializable {
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
+                ", password='" + password + '\'' +
+                ", enabled=" + enabled +
+                ", role=" + role +
                 ", activities=" + activities +
                 '}';
     }

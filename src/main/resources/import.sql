@@ -1,6 +1,6 @@
-insert into user (firstname, lastname, email, password, enable, role, phone) values ('test 1', 'DUPOND', 'admin@gmail.com', 'admin', true, 'ROLE_ADMIN', '0211334455');
-insert into user (firstname, lastname, email, password, enable, role, phone) values ('test 2', 'DUPOND', 'user1@gmail.com', 'user', true, 'ROLE_USER', '0244556633');
-insert into user (firstname, lastname, email, password, enable, role, phone) values ('test 3', 'DUPOND', 'user2@gmail.com', 'user', true, 'ROLE_USER', '0288776655');
+insert into user (firstname, lastname, email, password, enabled, role) values ('test 1', 'DUPOND', 'user1@gmail.com', 'user1', true, 'ROLE_USER');
+insert into user (firstname, lastname, email, password, enabled, role) values ('test 2', 'DUPOND', 'user2@gmail.com', 'user2', true, 'ROLE_USER');
+insert into user (firstname, lastname, email, password, enabled, role) values ('test 3', 'DUPOND', 'user3@gmail.com', 'user3', true, 'ROLE_USER');
 
 insert into place (name) values ('Rennes');
 insert into place (name) values ('Saint-Malo');
