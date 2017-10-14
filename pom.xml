@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.eloisance.istic</groupId>
-  <artifactId>tp.taa.jpa</artifactId>
-  <version>1.4.0.RELEASE</version>
+  <artifactId>project.weekend</artifactId>
+  <version>1.0.0.RELEASE</version>
   <packaging>jar</packaging>
 
-  <name>tp.taa.jpa</name>
+  <name>project.weekend</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -68,9 +68,24 @@
   <build>
     <plugins>
       <plugin>
+        <groupId>com.spotify</groupId>
+        <artifactId>dockerfile-maven-plugin</artifactId>
+        <version>1.3.4</version>
+        <configuration>
+          <repository>${project.artifactId}</repository>
+        </configuration>
+      </plugin>
+      <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <version>1.5.7.RELEASE</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
