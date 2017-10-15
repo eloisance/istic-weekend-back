@@ -56,6 +56,7 @@ public class User implements Serializable {
         this.lastname = lastname;
     }
 
+    @Column(unique = true)
     public String getEmail() {
         return email;
     }
