@@ -12,6 +12,7 @@ insert into sport (name) values ('Voile');
 insert into sport (name) values ('Surf');
 insert into sport (name) values ('Ski');
 insert into sport (name) values ('Randonnée');
+insert into sport (name) values ('Poney');
 
 insert into level (name, sport_id, rank) values ('noob', 1, 1);
 insert into level (name, sport_id, rank) values ('medium', 1, 2);
@@ -19,6 +20,9 @@ insert into level (name, sport_id, rank) values ('expert', 1, 3);
 insert into level (name, sport_id, rank) values ('ourson', 4, 2);
 insert into level (name, sport_id, rank) values ('piou piou', 4, 1);
 insert into level (name, sport_id, rank) values ('flocon', 4, 3);
+insert into level (name, sport_id, rank) values ('galop 1', 6, 1);
+insert into level (name, sport_id, rank) values ('galop 2', 6, 2);
+insert into level (name, sport_id, rank) values ('galop 3', 6, 3);
 
 insert into activity (level_id, user_id) values (2, 1);
 insert into activity (level_id, user_id) values (3, 1);
