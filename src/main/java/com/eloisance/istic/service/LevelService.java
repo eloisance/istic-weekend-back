@@ -26,4 +26,8 @@ public class LevelService implements ServiceInterface<Level> {
     public List<Level> findAll() {
         return levelDAO.findAll();
     }
+
+    public void save(Level level) {
+        this.levelDAO.save(level);
+    }
 }

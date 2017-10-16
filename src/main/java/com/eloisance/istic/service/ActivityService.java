@@ -24,4 +24,8 @@ public class ActivityService implements ServiceInterface<Activity> {
     public List<Activity> findAll() {
         return activityDAO.findAll();
     }
+
+    public void save(Activity activity) {
+        this.activityDAO.save(activity);
+    }
 }

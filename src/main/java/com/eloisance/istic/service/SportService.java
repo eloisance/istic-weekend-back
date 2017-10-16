@@ -24,4 +24,8 @@ public class SportService implements ServiceInterface<Sport> {
     public List<Sport> findAll() {
         return sportDAO.findAll();
     }
+
+    public void save(Sport sport) {
+        this.sportDAO.save(sport);
+    }
 }

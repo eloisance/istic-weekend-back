@@ -24,4 +24,8 @@ public class PlaceService implements ServiceInterface<Place> {
     public List<Place> findAll() {
         return placeDAO.findAll();
     }
+
+    public void save(Place place) {
+        this.placeDAO.save(place);
+    }
 }
