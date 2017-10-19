@@ -1,0 +1,29 @@
+version: "2.1"
+services:
+  angular:
+    build: ../istic-weekend-front
+    ports:
+      - "4200:4200"
+    networks:
+      - weekend-network
+  mysql:
+    container_name: mysql
+    image: mysql
+    networks:
+          - weekend-network
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=weekend
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+  spring:
+    image: project.weekend
+    ports:
+      - "8080:8080"
+    networks:
+          - weekend-network
+    depends_on:
+      - mysql
+networks:
+  weekend-network:
+    external: true
