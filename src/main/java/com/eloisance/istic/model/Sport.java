@@ -11,12 +11,14 @@ public class Sport implements Serializable {
 
     private Long id;
     private String name;
+    private String image;
     private List<Level> levels;
 
     public Sport() { }
 
-    public Sport(String name, List<Level> levels) {
+    public Sport(String name, String image, List<Level> levels) {
         setName(name);
+        setImage(image);
         setLevels(levels);
     }
 
@@ -36,6 +38,14 @@ public class Sport implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @JsonIgnoreProperties(value = "sport")
