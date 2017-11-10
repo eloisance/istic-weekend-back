@@ -23,6 +23,9 @@ insert into level (name, sport_id, rank) values ('flocon', 4, 3);
 insert into level (name, sport_id, rank) values ('galop 1', 6, 1);
 insert into level (name, sport_id, rank) values ('galop 2', 6, 2);
 insert into level (name, sport_id, rank) values ('galop 3', 6, 3);
+insert into level (name, sport_id, rank) values ('Niveau 1', 2, 1);
+insert into level (name, sport_id, rank) values ('Vague de bronze', 3, 1);
+insert into level (name, sport_id, rank) values ('Niveau 1', 5, 1);
 
 insert into activity (level_id, user_id) values (2, 1);
 insert into activity (level_id, user_id) values (3, 1);
