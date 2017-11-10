@@ -1,11 +1,13 @@
 package com.eloisance.istic.controller;
 
 import com.eloisance.istic.model.Activity;
+import com.eloisance.istic.model.Level;
+import com.eloisance.istic.model.User;
 import com.eloisance.istic.service.ActivityService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.eloisance.istic.service.LevelService;
+import com.eloisance.istic.service.UserService;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,9 +16,13 @@ import java.util.List;
 public class ActivityController {
 
     private ActivityService activityService;
+    private LevelService levelService;
+    private UserService userService;
 
-    public ActivityController(ActivityService activityService) {
+    public ActivityController(ActivityService activityService, LevelService levelService, UserService userService) {
         this.activityService = activityService;
+        this.userService = userService;
+        this.levelService = levelService;
     }
 
     /**
@@ -24,7 +30,7 @@ public class ActivityController {
      * @param id activity id
      * @return activity
      */
-    @RequestMapping(value="/activities/{id}", method= RequestMethod.GET)
+    @RequestMapping(value="/activities/{id}", method=RequestMethod.GET)
     public Activity getActivity(@PathVariable("id") Long id) {
         return activityService.findOne(id);
     }
@@ -34,11 +40,19 @@ public class ActivityController {
      * Endpoint to GET list all activities
      * @return list activities
      */
-    @RequestMapping(value="/activities", method= RequestMethod.GET)
+    @RequestMapping(value="/activities", method=RequestMethod.GET)
     public List<Activity> getActivities() {
         return activityService.findAll();
     }
 
 
+    @RequestMapping(value="/activity", method=RequestMethod.POST)
+    public void saveActivity(OAuth2Authentication authentication, @RequestBody Level l) {
+        org.springframework.security.core.userdetails.User u = (org.springframework.security.core.userdetails.User) authentication.getPrincipal();
+        User user = userService.findByEmail(u.getUsername());
+        Level level = levelService.findOne(l.getId());
+        Activity a = new Activity(user, level);
+        activityService.save(a);
+    }
 
 }

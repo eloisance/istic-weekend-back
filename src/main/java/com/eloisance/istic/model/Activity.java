@@ -1,11 +1,11 @@
 package com.eloisance.istic.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 @Entity
+@Table(uniqueConstraints=@UniqueConstraint(columnNames={"user_id", "level_id"}))
 public class Activity {
 
     private Long id;
