@@ -12,3 +12,10 @@ spring:
         show_sql: true
         batch.size: 20
         current.session.context.class: org.springframework.orm.hibernate5.SpringSessionContext
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: eloisance.smtp.server@gmail.com
+    password: udM5bT65
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.starttls.enable: true

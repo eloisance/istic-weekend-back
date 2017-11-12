@@ -1,6 +1,6 @@
-insert into user (firstname, lastname, email, password, enabled, role) values ('test 1', 'DUPOND', 'user1@gmail.com', 'user1', true, 'ROLE_USER');
-insert into user (firstname, lastname, email, password, enabled, role) values ('test 2', 'DUPOND', 'user2@gmail.com', 'user2', true, 'ROLE_USER');
-insert into user (firstname, lastname, email, password, enabled, role) values ('test 3', 'DUPOND', 'user3@gmail.com', 'user3', true, 'ROLE_USER');
+insert into user (firstname, lastname, email, password, lat, lng, enabled, role) values ('test 1', 'DUPOND', 'user1@gmail.com', 'user1', 48.6462606, -2.0773425, true, 'ROLE_USER');
+insert into user (firstname, lastname, email, password, lat, lng, enabled, role) values ('test 2', 'DUPOND', 'user2@gmail.com', 'user2', 48.8588376, 2.2768483, true, 'ROLE_USER');
+insert into user (firstname, lastname, email, password, lat, lng, enabled, role) values ('test 3', 'DUPOND', 'user3@gmail.com', 'user3', 43.703169, 7.1826053, true, 'ROLE_USER');
 
 insert into place (name) values ('Rennes');
 insert into place (name) values ('Saint-Malo');
