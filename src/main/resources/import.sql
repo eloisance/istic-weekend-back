@@ -2,11 +2,6 @@ insert into user (firstname, lastname, email, password, lat, lng, enabled, role)
 insert into user (firstname, lastname, email, password, lat, lng, enabled, role) values ('test 2', 'DUPOND', 'user2@gmail.com', 'user2', 48.8588376, 2.2768483, true, 'ROLE_USER');
 insert into user (firstname, lastname, email, password, lat, lng, enabled, role) values ('test 3', 'DUPOND', 'user3@gmail.com', 'user3', 43.703169, 7.1826053, true, 'ROLE_USER');
 
-insert into place (name) values ('Rennes');
-insert into place (name) values ('Saint-Malo');
-insert into place (name) values ('Brest');
-insert into place (name) values ('Mont Blanc');
-
 insert into sport (name, image) values ('Vélo', 'bike.jpeg');
 insert into sport (name, image) values ('Voile', 'sailboat.jpeg');
 insert into sport (name, image) values ('Surf', 'surf.jpeg');
