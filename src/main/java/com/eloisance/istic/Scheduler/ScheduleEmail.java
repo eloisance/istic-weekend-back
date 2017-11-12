@@ -13,7 +13,8 @@ public class ScheduleEmail {
         this.emailService = emailService;
     }
 
-    @Scheduled(cron = "*/3 * * * * *", zone = "Europe/Paris")
+    // debug with -> @Scheduled(cron = "*/2 * * * * *", zone = "Europe/Paris")
+    @Scheduled(cron = "0 0 18 * * WED", zone = "Europe/Paris") // Mercredi à 18h
     public void notifyUsers() {
         System.out.println("ScheduleEmail -> notifyUsers()");
         emailService.send();

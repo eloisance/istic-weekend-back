@@ -8,6 +8,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class EmailService {
@@ -26,20 +27,26 @@ public class EmailService {
     }
 
     /**
-     *
+     * Select best activity from weather param
+     * TODO: improve this method - replace random by real detection activity with weather
      */
-    private void getWeather() {
-        this.weatherService.getWeatherAt();
+    private String getActivityByWeather(List<Activity> activities, String weather) {
+        if (activities.size() == 0) {
+            return null;
+        }
+        Random random = new Random();
+        Integer rand = random.nextInt(activities.size());
+        return activities.get(rand).getLevel().getSport().getName();
     }
 
     /**
      * @param u User to personalize template message
      * @return message
      */
-    private String getMessageEmail(User u) {
+    private String getMessageEmail(User u, String weather, String activity) {
         return "Bonjour " + u.getFirstname() + " " + u.getLastname() + "\n\n" +
-        "D'après la météo et vos activités sélectionnées, pour ce weekend nous vous " +
-        "conseillons de faire du vélo !";
+        "D'après la météo ("+weather+") et vos activités sélectionnées, pour ce weekend nous vous " +
+        "conseillons l'activité suivante: " + activity;
     }
 
     /**
@@ -73,12 +80,13 @@ public class EmailService {
         System.out.println("Start send emails");
         List<User> users = userService.findAll();
         for (User u : users) {
+            String weather = this.weatherService.getWeatherAt(u.getLat(), u.getLng());
             List<Activity> activities = u.getActivities();
-            for (Activity a : activities) {
-                a.getLevel().getSport().getName();
+            String activity = getActivityByWeather(activities, weather);
+            if (weather != null && activity != null) {
+                sendSimpleMessage(u.getEmail(), emailSubject, getMessageEmail(u, weather, activity));
             }
-            sendSimpleMessage(u.getEmail(), emailSubject, getMessageEmail(u));
-        }
+         }
         System.out.println("All emails are send");
         sendReport(users.size());
     }
