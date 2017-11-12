@@ -15,17 +15,21 @@ public class User implements Serializable {
     private String lastname;
     private String email;
     private String password;
+    private Double lat;
+    private Double lng;
     private boolean enabled;
     private EnumRole role;
     private List<Activity> activities;
 
     public User() { }
 
-    public User(String firstname, String lastname, String email, String password, boolean enabled, EnumRole role) {
+    public User(String firstname, String lastname, String email, String password, Double lat, Double lng, boolean enabled, EnumRole role) {
         setFirstname(firstname);
         setLastname(lastname);
         setEmail(email);
         setPassword(password);
+        setLat(lat);
+        setLng(lng);
         setEnabled(enabled);
         setRole(role);
     }
@@ -71,6 +75,22 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 
     public void setEnabled(boolean enabled) {

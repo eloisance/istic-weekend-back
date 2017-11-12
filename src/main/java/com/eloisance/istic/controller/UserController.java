@@ -57,6 +57,8 @@ public class UserController {
         user.setLastname(u.getLastname());
         user.setEmail(u.getEmail());
         user.setPassword(passwordEncoder.encode(u.getPassword()));
+        user.setLat(u.getLat());
+        user.setLng(u.getLng());
         user.setEnabled(true);
         user.setRole(EnumRole.ROLE_USER);
         userService.save(user);
