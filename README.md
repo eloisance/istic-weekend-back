@@ -6,6 +6,6 @@
 
 ## Installation
 - clone this project and front project [https://github.com/eloisance/istic-weekend-front]
-- build spring image > mvn clean package dockerfile:build
+- build spring image > sudo mvn clean package dockerfile:build
 - in folder of this project run command > sudo docker-compose up
 - app should be available on [http://localhost:4200]
